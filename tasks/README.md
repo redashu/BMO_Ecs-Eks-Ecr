@@ -55,7 +55,7 @@ helloc1.txt
        
   ```
  </p> 
-
+</details>
  ### Note: python code is on URL 
 
  [click_here](https://raw.githubusercontent.com/redashu/pythonLang/main/while.py)
@@ -75,3 +75,5 @@ helloc1.txt
       4. container must not be able to communitcate to other containers as well as not to internet
   ```
  </p>  
+
+</details>
