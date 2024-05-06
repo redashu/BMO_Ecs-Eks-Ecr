@@ -42,3 +42,13 @@ docker  run  --name ashuc1  -d   alpine  ping fb.com
 
 <img src="imp.png">
 
+## application containerization 
+
+### building docker images using Dockerfile 
+
+<img src="imgbuild.png">
+
+### python code demo 
+
+<img src="buildpy.png">
+
