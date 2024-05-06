@@ -52,3 +52,23 @@ docker  run  --name ashuc1  -d   alpine  ping fb.com
 
 <img src="buildpy.png">
 
+## Webapp -- contaienrs 
+
+### sample webapp source 
+<img src="webs.png">
+
+### to access web based apps running in containers we need to understand networking 
+
+<img src="net1.png">
+
+### Docker default bridge
+
+<img src="br1.png">
+
+### bride 
+
+<img src="br2.png">
+
+### port mapping to access container apps 
+
+<img src="portm.png">
