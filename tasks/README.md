@@ -59,4 +59,19 @@ helloc1.txt
  ### Note: python code is on URL 
 
  [click_here](https://raw.githubusercontent.com/redashu/pythonLang/main/while.py)
-  
+
+### Task 3 
+
+### Docker container  with No internet connection 
+
+<details>
+<summary>show</summary>
+ <p>
+
+  ```bash
+      1.  create a container of <yourname>cc11 
+      2. choose oraclelinux:8.4  as docker image 
+      3. any process of container
+      4. container must not be able to communitcate to other containers as well as not to internet
+  ```
+ </p>  
