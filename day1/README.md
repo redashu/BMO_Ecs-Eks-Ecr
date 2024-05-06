@@ -72,3 +72,17 @@ docker  run  --name ashuc1  -d   alpine  ping fb.com
 ### port mapping to access container apps 
 
 <img src="portm.png">
+
+## Intro to Container registries 
+
+<img src="cr_reg.png">
+
+### image naming format 
+
+<img src="name.png">
+
+### pushing image to Docker hub 
+
+<img src="push.png">
+
+

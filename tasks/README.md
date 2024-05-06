@@ -77,3 +77,8 @@ helloc1.txt
  </p>  
 
 </details>
+
+### Solution 
+
+<img src="t3.png">
+
