@@ -41,7 +41,7 @@
 
 ### setup of ECS options av
 
-<img src="ecs_setup.png">
+<img src="images/ecs_setup.png">
 
 ### setup of ECS using CDK -- checking details 
 
