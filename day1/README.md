@@ -85,4 +85,14 @@ docker  run  --name ashuc1  -d   alpine  ping fb.com
 
 <img src="push.png">
 
+## Compose introduction -- for Multiple Build and RUN 
+
+<img src="compose.png">
+
+### compose file version 
+
+<img src="filev.png">
+
+
+
 
