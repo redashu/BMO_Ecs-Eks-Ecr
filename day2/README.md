@@ -51,3 +51,24 @@
 
 <img src="images/cdk2.png">
 
+### docker image build to ecs cluster provision 
+
+<img src="images/ecs_pro.png">
+
+## Task Definitions in ECS 
+
+<img src="images/task_def1.png">
+
+### Understanding container networking provider In ECS 
+### CNM vs CNI (only awsvpc is the option)
+
+<img src="images/cnet1.png">
+
+### Understanding task and service in ECS
+
+<img src="images/tasksvc1.png">
+
+
+
+
+
