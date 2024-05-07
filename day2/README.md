@@ -39,7 +39,7 @@
 
 <img src="images/ecs3.png">
 
-### setup of ECS options
+### setup of ECS options av
 
 <img src="ecs_setup.png">
 
