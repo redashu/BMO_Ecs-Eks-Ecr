@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  ashu-ui-app: # name of my app 
+    image: ashunginx:uibmov1  # name of docker image to build 
+    build: .  # location of Dockerfile 
+    container_name: ashu-web-ui-c1 # name of container 
+    ports: # port mapping 
+      - 1234:80 
+  ashu-php-app:  # taking sample php webapp
+    container_name: ashu-php-c1 
+    image: adminer:latest # pulling image from docker hub 
+    ports:
+      - 1122:8080 
+    depends_on: # it will wait for that service to be ready 
+      - ashu-mysqldb-app 
+  ashu-mysqldb-app: 
+    image:  mysql # image from docker hub 
+    container_name: ashudbc1 
+    environment:
+      MYSQL_ROOT_PASSWORD: Ashudb@12345  # admin password 
+      MYSQL_USER: ashu  # general user 
+      MYSQL_PASSWORD: Db9@bmo123 # password for user 

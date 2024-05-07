@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  ashu-springapp:
+    image:  docker.io/dockerashu/ashuspring:bmoappv1  
+    build: # build arguemnt 
+      context: . # location of dockerfile 
+      dockerfile: spring.dockerfile  # name of dockerfile 
+    container_name: ashu-maven-c1 
+    ports: # port mapping 
+      - 1234:8080 
