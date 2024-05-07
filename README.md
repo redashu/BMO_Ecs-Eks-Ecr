@@ -6,3 +6,13 @@
 ### Schedule for Training Session 
 
 <img src="schedule.png">
+
+### setup of ECS using CDK -- checking details 
+
+<img src="images/cdk1.png">
+
+### CDK init 
+
+<img src="images/cdk2.png">
+
+
