@@ -17,4 +17,9 @@
 
 <img src="images/appenv.png">
 
+### pushing image to Docker hub 
+
+<img src="images/dh.png">
+
+
 
