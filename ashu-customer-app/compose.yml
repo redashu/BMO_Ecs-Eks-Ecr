@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  ashu-appcheck:
+    image:  ashu-customer:appv1 
+    build: . 
+    container_name: ashuwebc1 
+    environment:
+      myapp: prod 
+    ports:
+      - 2244:80 
