@@ -25,6 +25,20 @@
 
 <img src="images/lb.png">
 
+### pushing image to ECR 
+
+<img src="images/ecrpush.png">
+
+
+### CDK for ECR 
+
+<img src="images/ecrcdk.png">
+
+## Home work -- learning for concepts 
+
+<img src="images/home.png">
+
+
 
 
 
