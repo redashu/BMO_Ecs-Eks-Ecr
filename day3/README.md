@@ -9,3 +9,12 @@
 
 <img src="images/ecsrev.png">
 
+### Single Docker image with Multi stage app like Dev | UAT | PROD 
+
+<img src="images/multi.png">
+
+### passing env 
+
+<img src="images/appenv.png">
+
+
