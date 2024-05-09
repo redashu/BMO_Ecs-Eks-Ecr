@@ -50,5 +50,15 @@
 
 <img src="images/cdkeks.png">
 
+### Please Install aws cli 2.15 
+
+### Download kubeconfig file 
+
+<img src="images/down.png">
+
+---
+<img src="images/kubecc.png">
+
+
 
 
