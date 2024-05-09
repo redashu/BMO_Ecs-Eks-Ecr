@@ -96,6 +96,23 @@
 
 <img src="images/exec.png">
 
+### EKS in single line 
+
+<img src="images/ekssg.png">
+
+### Loadbalacing in EKS External & internal 
+
+<img src="images/lb1.png">
+
+### Creating Loadbalancer using Service Resources in k8s 
+
+<img src="images/svc1.png">
+
+## Creating External & internal LB 
+
+<img src="images/svc2.png">
+
+
 
 
 
