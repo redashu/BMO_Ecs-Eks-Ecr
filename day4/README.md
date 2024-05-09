@@ -38,4 +38,17 @@
 
 <img src="images/work.png">
 
+## Setup k8s 
+
+<img src="images/setup.png">
+
+### EKS offering 
+
+<img src="images/eks11.png">
+
+### CDK for EKS 
+
+<img src="images/cdkeks.png">
+
+
 
