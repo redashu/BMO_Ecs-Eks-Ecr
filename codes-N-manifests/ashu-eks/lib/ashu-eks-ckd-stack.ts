@@ -2,6 +2,7 @@ import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2'
 import * as iam from 'aws-cdk-lib/aws-iam'
+import * as eks from 'aws-cdk-lib/aws-eks'
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class AshuEksCkdStack extends cdk.Stack {
@@ -19,6 +20,19 @@ export class AshuEksCkdStack extends cdk.Stack {
       assumedBy: new iam.AccountRootPrincipal()
       
     });
-    // creating EKS cluster 
+    // creating EKS cluster
+    const cluster = new eks.Cluster(this,'ashu-eks-clustercdk',{
+      vpc,
+      version: eks.KubernetesVersion.V1_29,
+      clusterName: 'ashueks-ckdcluster',
+      mastersRole: ashuEKSadminRole,
+      endpointAccess: eks.EndpointAccess.PUBLIC_AND_PRIVATE,
+      defaultCapacityInstance: ec2.InstanceType.of(ec2.InstanceClass.T3,ec2.InstanceSize.MEDIUM),
+      defaultCapacity: 1,
+      vpcSubnets: [{ subnetType: ec2.SubnetType.PUBLIC}],
+      securityGroup: ec2.SecurityGroup.fromSecurityGroupId(this,'ashudefaultsec','sg-05c14cfab5ff1fd6c')
+      
+    });
+
   }
 }
