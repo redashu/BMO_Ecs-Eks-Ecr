@@ -59,6 +59,44 @@
 ---
 <img src="images/kubecc.png">
 
+### Final eks architecture 
+
+<img src="images/eksfinal.png">
+
+### Kubectl life cycle commands 
+
+## checking version 
+
+### getnodes 
+
+### task vs pod 
+
+<img src="images/pod1.png">
+
+## Creating pod manifest using kubectl 
+
+<img src="images/pod11.png">
+
+### veritical scaling in pod 
+
+<img src="images/ver.png">
+
+## Deployment controller comes in picture
+
+<img src="images/deploy.png">
+### Creating deployment -- which will create pod 
+
+<img src="images/deploy1.png">
+
+### Deployment can scale pod manually / automatically 
+
+<img src="images/scale1.png">
+
+### login to pod container 
+
+<img src="images/exec.png">
+
+
 
 
 
