@@ -1,6 +1,7 @@
 FROM oraclelinux:8.4 
 LABEL email="ashutoshh@linux.com"
 ENV myapp=ashu 
+
 # is to define env variables with default values
 RUN yum install httpd -y \ 
 && mkdir -p  /common/{dev_app,prod_app}
