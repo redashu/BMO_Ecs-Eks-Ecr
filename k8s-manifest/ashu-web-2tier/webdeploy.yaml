@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ashu-web
+  name: ashu-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ashu-web
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ashu-web
+    spec:
+      containers:
+      - image: adminer
+        name: adminer
+        ports:
+        - containerPort: 8080
+        resources: 
+          requests:
+            memory: 50M 
+            cpu: 70m  # 1vcpu == 1000 mili core 
+          limits: 
+            memory: 200M
+            cpu: 150m 
+status: {}

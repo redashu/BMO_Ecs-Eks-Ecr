@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  creationTimestamp: null
+  name: ashu-web
+spec:
+  maxReplicas: 20
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ashu-web
+  targetCPUUtilizationPercentage: 60
+status:
+  currentReplicas: 0
+  desiredReplicas: 0

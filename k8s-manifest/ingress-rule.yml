@@ -14,6 +14,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: ashu-internal-lb # internal LB 
+            name: ashu-web-lb # internal LB 
             port:
-              number: 80 # lb port 
+              number: 8080 # lb port 

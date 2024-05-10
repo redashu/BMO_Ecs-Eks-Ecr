@@ -191,3 +191,103 @@ ingress-nginx-controller-admission   ClusterIP      172.20.189.23    <none>     
  humanfirmware@darwin  ~/Desktop  
 
 ```
+
+## Deploy app with web & 
+
+### Db yaml
+
+```
+kubectl  create deployment ashu-db --image mysql --port 3306 --dry-run=client -o yaml >db_deploy.yml
+```
+
+### Creating secret to store dbcred
+
+```
+ kubectl create secret generic ashu-db-cred  --from-literal  MYSQL_USER=ashu  --from-literal MYSQL_PASSWORD=Ashudb@12345 --from-literal MYSQL_ROOT_PASSWORD=AdminPass@12345  --dry-run=client -o yaml >dbsecret.yaml
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  kubectl create -f dbsecret.yaml 
+secret/ashu-db-cred created
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  kubectl get secret
+NAME           TYPE     DATA   AGE
+ashu-db-cred   Opaque   3      10s
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  
+```
+
+### Understanding HPA 
+
+<img src="images/hpa.png">
+
+### Creating web
+
+```
+humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  kubectl get deploy 
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+ashu-db    1/1     1            1           31m
+ashu-web   1/1     1            1           109s
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  kubectl  expose deployment  ashu-web --type ClusterIP --port 8
+080 --name ashu-web-lb --dry-run=client -o yaml >websvc.yml
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  kubectl create -f websvc.yml 
+service/ashu-web-lb created
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  kubectl get svc
+NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+ashu-db-lb    ClusterIP   172.20.230.62    <none>        3306/TCP   24m
+ashu-web-lb   ClusterIP   172.20.228.241   <none>        8080/TCP   10s
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  
+```
+
+### app routes
+
+<img src="images/appc.png">
+
+
+### HPA 
+
+```
+humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  ls
+db_deploy.yml  dbsecret.yaml  dbsvc.yml      webdeploy.yaml websvc.yml
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  kubectl get deploy
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+ashu-db    1/1     1            1           74m
+ashu-web   1/1     1            1           45m
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  kubectl autoscale deployment ashu-web 
+ --cpu-percent 60 --min 2 --max 20 --dry-run=client -o yaml 
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  creationTimestamp: null
+  name: ashu-web
+spec:
+  maxReplicas: 20
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ashu-web
+  targetCPUUtilizationPercentage: 60
+status:
+  currentReplicas: 0
+  desiredReplicas: 0
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  kubectl autoscale deployment ashu-web  --cpu-percent 60 --min 2 --max 20 --dry-run=client -o yaml >hpa.yml
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-web-2tier   master ±  kubectl create -f hpa.yml 
+horizontalpodautoscaler.autoscaling/ashu-web created
+ humanfirmware@darwin  ~/BMO_Ecs-Eks-Ecr/k8s-manifest/ashu-we
+```
+
+### hpa works
+
+```
+ humanfirmware@darwin  ~/Desktop  kubectl get deploy
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+ashu-db    1/1     1            1           76m
+ashu-web   2/2     2            2           47m
+ humanfirmware@darwin  ~/Desktop  kubectl  get  hpa
+NAME       REFERENCE             TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+ashu-web   Deployment/ashu-web   1%/60%    2         20        2          38s
+ humanfirmware@darwin  ~/Desktop  kubectl  get po 
+NAME                        READY   STATUS    RESTARTS   AGE
+ashu-db-6cd4f6d774-md62t    1/1     Running   0          76m
+ashu-web-85777756cd-5drvc   1/1     Running   0          33s
+ashu-web-85777756cd-jfvvs   1/1     Running   0          47m
+ humanfirmware@darwin  ~/Desktop  
+
+```
+
